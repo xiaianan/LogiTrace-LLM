@@ -1,0 +1,53 @@
+# 数据源配置
+sources:
+  dramexchange:
+    name: "DRAMeXchange"
+    base_url: "https://www.dramexchange.com"
+    spot_price_url: "https://www.dramexchange.com/#"
+    news_url: "https://www.dramexchange.com/News/"
+    dxi_url: "https://www.dramexchange.com/DXI/"
+    rate_limit: 3  # 请求间隔(秒)
+    retry_times: 3
+    timeout: 30
+
+# 目标存储颗粒规格
+target_specs:
+  ddr4:
+    type: "DDR4"
+    density: "8Gb"
+    config: "1Gx8"
+    speed: "3200MT/s"
+    priority: 1
+  ddr5:
+    type: "DDR5"
+    density: "16Gb"
+    config: "standard"
+    speed: "4800MT/s"
+    priority: 2
+  nand_tl:
+    type: "NAND Flash"
+    density: "128Gb"
+    cell_type: "TLC"
+    priority: 1
+
+# 数据收集时间范围
+time_range:
+  months: 24
+  start_date: "2024-03-01"
+  end_date: "2026-03-01"
+
+# 输出配置
+output:
+  raw_dir: "storage/raw"
+  processed_dir: "storage/processed"
+  format: "csv"
+  encoding: "utf-8-sig"
+
+# 反爬虫设置
+anti_detection:
+  use_proxy: false
+  proxy_list: []
+  user_agent_rotation: true
+  request_delay_min: 2
+  request_delay_max: 5
+  headless: true
